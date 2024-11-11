@@ -15,6 +15,60 @@
   font-size: 62.5%;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -33,6 +87,8 @@ body {
   min-height: 100vh; /* Ensures full viewport height */
   margin-inline: auto; /* Centers body horizontally */
   box-sizing: border-box; /* Ensures padding is included in max-width */
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1 {
