@@ -1,7 +1,7 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useCart } from "../context/ProductProvider"; // To access the product list
 import styles from "./ProductDetail.module.css";
-import { addToCart } from "../actions/cartActions";
+import { addToCart, removeFromCart } from "../actions/cartActions";
 
 function ProductDetail() {
   const { id } = useParams(); // Get product ID from URL params
@@ -20,11 +20,15 @@ function ProductDetail() {
     dispatch(addToCart(product));
   };
 
+  const remove = (product) => {
+    dispatch(removeFromCart(product));
+  };
+
   return (
     <div className={styles.container}>
-      <button>{cart.length} items in cart</button>
+      <h3>{cart.length} items in cart</h3>
       {cart.map((product) => (
-        <li key={product.id}>
+        <li key={product.id} className={styles.li}>
           <h2>
             {product.quantity} x {product.name} ready for checkout
           </h2>
@@ -37,8 +41,10 @@ function ProductDetail() {
       {/* Optionally, you can add product image */}
       <div className={styles.checkout}>
         <button onClick={() => add(product)}>Add to Cart</button>
-        <button>Remove from cart</button>
-        <button>Checkout</button>
+        <button onClick={() => remove(product)}>Remove from cart</button>
+        <button>
+          <Link to={"/cart"}>Cart</Link>
+        </button>
       </div>
     </div>
   );
